@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lab 2 Report</title>
+  <style>
+    @page { size: letter; margin: 0.6in; }
+    body { font-family: "Georgia", serif; color: #1f2933; line-height: 1.35; margin: 0; }
+    .page { page-break-after: always; min-height: 9.7in; }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 { margin: 0 0 0.2rem 0; color: #102a43; }
+    h1 { font-size: 1.55rem; }
+    h2 { font-size: 1.15rem; margin-top: 0.85rem; border-bottom: 1px solid #d9e2ec; padding-bottom: 0.1rem; }
+    p, li { font-size: 0.95rem; }
+    ul { margin-top: 0.2rem; padding-left: 1rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    th, td { border: 1px solid #bcccdc; padding: 0.35rem; font-size: 0.9rem; text-align: left; }
+    .placeholder { color: #7b8794; font-style: italic; }
+    .box { border: 1px dashed #7b8794; padding: 0.45rem; margin-top: 0.45rem; min-height: 1.1in; background: #f7f9fb; }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <h1>Lab 2: House Segmentation from Aerial Imagery</h1>
+    <p><strong>Student:</strong> <span class="placeholder">Add your name</span></p>
+    <p><strong>Course / Section:</strong> <span class="placeholder">Add course details</span></p>
+    <p><strong>Date:</strong> <span class="placeholder">Add submission date</span></p>
+
+    <h2>Objective</h2>
+    <p>
+      This lab extends the Lab 1 application by adding secrets injection, CI/CD automation, and a segmentation
+      model for identifying houses in aerial images. The pipeline includes dataset preparation, model training,
+      evaluation with IoU and Dice metrics, and deployment through a Dockerized FastAPI service.
+    </p>
+
+    <h2>Dataset Description and Preprocessing</h2>
+    <p>
+      The training pipeline expects aerial images under <code>data/raw/images</code> and polygon annotations under
+      <code>data/raw/annotations</code>. Each annotation file stores house polygons that are converted into binary
+      pixel masks during preprocessing.
+    </p>
+    <ul>
+      <li>Input: RGB aerial imagery.</li>
+      <li>Label format: polygons labeled <code>house</code>.</li>
+      <li>Mask generation: polygons are rasterized into grayscale masks where house pixels are white.</li>
+      <li>Split strategy: train / validation / test = 70% / 15% / 15%.</li>
+      <li>Normalization: images are resized to 256 x 256 and scaled to [0, 1].</li>
+    </ul>
+
+    <h2>Week 7 Pixel Mask Generation Workflow</h2>
+    <p>
+      The dataset preparation script reproduces the Week 7 mask-generation concept by taking geometric
+      annotations and converting them into dense pixel masks. This step is implemented in
+      <code>lab/prepare_dataset.py</code>.
+    </p>
+
+    <div class="box">
+      Insert one screenshot here showing an example raw aerial image beside its generated mask.
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>Model Architecture and Training Approach</h2>
+    <p>
+      A compact U-Net was selected for binary semantic segmentation. The encoder-decoder structure preserves
+      context while recovering fine-grained boundaries through skip connections. The network was implemented in
+      PyTorch in <code>lab/models.py</code>.
+    </p>
+    <ul>
+      <li>Input channels: 3</li>
+      <li>Output channels: 1 binary mask</li>
+      <li>Base features: 32, 64, 128, 256</li>
+      <li>Loss: Binary cross-entropy with logits</li>
+      <li>Optimizer: Adam</li>
+      <li>Checkpoint strategy: best validation Dice score</li>
+    </ul>
+
+    <h2>Secrets Injection</h2>
+    <p>
+      Secrets are loaded dynamically from environment variables using <code>python-dotenv</code>. The
+      implementation avoids hard-coded credentials by reading runtime settings from <code>.env</code> and exposing
+      only safe configuration values through the API.
+    </p>
+
+    <h2>CI/CD Pipeline</h2>
+    <p>
+      GitHub Actions automates testing, Docker builds, and optional Docker Hub publication. The workflow runs
+      unit tests on every push and pull request, then builds the container image. On the main branch, it pushes
+      the image when Docker Hub secrets are configured.
+    </p>
+
+    <div class="box">
+      Insert a screenshot of a successful GitHub Actions run here.
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>Metrics and Evaluation</h2>
+    <p>
+      The model is evaluated using Intersection over Union and Dice score on the held-out test set. Training and
+      validation loss curves are also recorded to monitor convergence and detect overfitting.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Value</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Test IoU</td><td class="placeholder">Replace with artifacts/metrics.json:test_iou</td><td><code>lab/train.py</code> or <code>lab/evaluate.py</code></td></tr>
+        <tr><td>Test Dice</td><td class="placeholder">Replace with artifacts/metrics.json:test_dice</td><td><code>lab/train.py</code> or <code>lab/evaluate.py</code></td></tr>
+        <tr><td>Best Epoch</td><td class="placeholder">Replace with artifacts/metrics.json:best_epoch</td><td><code>lab/train.py</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Key Observations</h2>
+    <ul>
+      <li class="placeholder">Summarize whether the model learned roof boundaries cleanly or produced coarse masks.</li>
+      <li class="placeholder">Describe any overfitting signs from the train/validation curves.</li>
+      <li class="placeholder">Comment on class imbalance and whether small houses were harder to segment.</li>
+    </ul>
+
+    <div class="box">
+      Insert the training-curves figure here using <code>artifacts/training_curves.png</code>.
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>Prediction Examples</h2>
+    <p>
+      The final pipeline saves qualitative predictions in <code>artifacts/sample_predictions.png</code>. These
+      examples should compare the original aerial image, the ground-truth mask, and the predicted mask to show
+      how well the model isolates roof regions.
+    </p>
+
+    <div class="box">
+      Insert the prediction panel here using <code>artifacts/sample_predictions.png</code>.
+    </div>
+
+    <h2>Challenges and Mitigations</h2>
+    <ul>
+      <li>Potential overfitting can be reduced by increasing data volume, adding augmentation, or using early stopping.</li>
+      <li>Class imbalance can be reduced with weighted losses or focal-style objectives.</li>
+      <li>False positives on roads or parking areas can be reduced with more varied aerial training scenes.</li>
+      <li>Deployment risk from hard-coded secrets was removed by shifting runtime configuration into environment variables.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      This lab delivers a complete segmentation workflow: data preparation, mask generation, U-Net training,
+      quantitative evaluation, API serving, Docker packaging, and CI/CD automation. After inserting the measured
+      metrics and screenshots from the generated artifacts, this report can be exported as the required 4-page PDF.
+    </p>
+  </section>
+</body>
+</html>
+

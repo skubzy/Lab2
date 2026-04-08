@@ -1,0 +1,64 @@
+Objective
+Enhance your Lab 1 pipeline by adding secrets injection, implementing CI/CD, and replacing the pretrained model with a segmentation model trained on aerial footage for house segmentation. Use the pixel mask generation code from Week 7 to prepare your dataset. The goal is to report segmentation metrics (e.g., IoU, Dice score) and showcase the results in a 4-page report along with your code.
+
+Steps
+1. Secrets Injection
+Add a secrets management mechanism to securely manage sensitive information like API keys or credentials:
+Use environment variables via .env files (e.g., with python-dotenv).
+Alternatively, use a secret management tool (e.g., AWS Secrets Manager, HashiCorp Vault).
+Update your application to load secrets dynamically, ensuring they are not hard-coded.
+2. CI/CD Implementation
+Set up a CI/CD pipeline to automate code testing, building, and deployment:
+Use platforms like GitHub Actions, GitLab CI/CD, or Jenkins.
+Define pipeline stages for:
+Code testing (e.g., unit tests).
+Building the Docker image.
+Pushing the Docker image to Docker Hub.
+Bonus: Deploy the application (e.g., using Kubernetes or Docker Compose).
+Add automated tests to verify the API endpoints and application functionality.
+3. Dataset Preparation
+Use the pixel mask generation code from Week 7 to create a labeled dataset:
+Input: Aerial footage images.
+Output: Pixel masks where houses are labeled.
+Split the dataset into training, validation, and test sets.
+4. Model Replacement
+Replace the pretrained model with a segmentation model:
+Examples: UNet, DeepLabV3+, Mask R-CNN.
+Use a library like TensorFlow/Keras/PyTorch.
+Train the model:
+Use the prepared dataset.
+Apply transfer learning by fine-tuning a pretrained segmentation model or train from scratch. Your call.
+Track metrics:
+Use IoU (Intersection over Union) and Dice score as evaluation metrics.
+Monitor training and validation loss curves.
+5. Evaluation and Metrics
+Evaluate the trained model on the test set:
+Report IoU and/or Dice scores for the segmentation results.
+Visualize predictions:
+Show examples of aerial images, ground truth masks, and predicted masks.
+Include any issues encountered during training (e.g., overfitting, data imbalance) and how they were addressed.
+6. Deliverables
+Code:
+Submit a Python script or Jupyter Notebook containing:
+Secrets injection implementation.
+CI/CD pipeline configuration (e.g., workflow.yml for GitHub Actions).
+Dataset preparation code.
+Segmentation model training and evaluation code.
+Include comments/documentation for clarity.
+Report:
+A 4-page PDF summarizing:
+Dataset description and preprocessing.
+Model architecture and training approach.
+Metrics (IoU, Dice score) and key observations.
+Visualizations of sample predictions.
+Screenshots:
+Include screenshots of:
+CI/CD pipeline runs.
+Trained model predictions.
+Submission Guidelines
+Code: Submit a zip file or repository link containing:
+Application code and Dockerfile.
+CI/CD configuration files (e.g., .yml for GitHub Actions).
+Pixel mask generation code from Week 7.
+A requirements.txt file for dependencies.
+Report: 4-page PDF summarizing the process and results.d
