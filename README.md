@@ -18,7 +18,7 @@ This repository implements the full Lab 2 deliverable set described in `lab_requ
 |-- .github/workflows/ci-cd.yml
 |-- app/
 |   |-- api.py
-|   |-- config.pyCI
+|   |-- config.py
 |   `-- inference.py
 |-- lab/
 |   |-- dataset.py
