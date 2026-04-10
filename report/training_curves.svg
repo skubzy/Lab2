@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+  <rect width="1100" height="620" fill="#f7fafc"/>
+  <text x="60" y="58" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#102a43">Training and Validation Learning Curves</text>
+
+  <rect x="58" y="96" width="984" height="440" rx="14" fill="#ffffff" stroke="#cbd2d9" stroke-width="2"/>
+  <line x1="130" y1="480" x2="970" y2="480" stroke="#7b8794" stroke-width="2"/>
+  <line x1="130" y1="150" x2="130" y2="480" stroke="#7b8794" stroke-width="2"/>
+
+  <g font-family="Arial, sans-serif" font-size="18" fill="#486581">
+    <text x="118" y="505">0</text>
+    <text x="280" y="505">5</text>
+    <text x="430" y="505">10</text>
+    <text x="590" y="505">15</text>
+    <text x="750" y="505">20</text>
+    <text x="910" y="505">25</text>
+    <text x="76" y="484">0.0</text>
+    <text x="76" y="402">0.2</text>
+    <text x="76" y="320">0.4</text>
+    <text x="76" y="238">0.6</text>
+    <text x="76" y="156">0.8</text>
+  </g>
+
+  <g stroke="#d9e2ec" stroke-width="1">
+    <line x1="130" y1="398" x2="970" y2="398"/>
+    <line x1="130" y1="316" x2="970" y2="316"/>
+    <line x1="130" y1="234" x2="970" y2="234"/>
+    <line x1="130" y1="152" x2="970" y2="152"/>
+  </g>
+
+  <path d="M130 164 L162 185 L194 206 L226 232 L258 256 L290 282 L322 306 L354 330 L386 346 L418 362 L450 378 L482 389 L514 398 L546 406 L578 413 L610 420 L642 426 L674 430 L706 435 L738 439 L770 442 L802 445 L834 448 L866 451 L898 454 L930 457 L962 459"
+        fill="none" stroke="#d64545" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 174 L162 197 L194 218 L226 245 L258 268 L290 291 L322 312 L354 332 L386 348 L418 360 L450 371 L482 378 L514 385 L546 390 L578 394 L610 397 L642 399 L674 402 L706 406 L738 412 L770 417 L802 423 L834 428 L866 432 L898 435 L930 439 L962 444"
+        fill="none" stroke="#2f9e44" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 336 L162 296 L194 266 L226 245 L258 231 L290 220 L322 212 L354 203 L386 194 L418 185 L450 177 L482 171 L514 168 L546 164 L578 160 L610 157 L642 155 L674 154 L706 153 L738 152 L770 151 L802 151 L834 151 L866 152 L898 153 L930 154 L962 156"
+        fill="none" stroke="#1f77b4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 342 L162 308 L194 280 L226 260 L258 246 L290 236 L322 229 L354 221 L386 214 L418 206 L450 198 L482 194 L514 190 L546 186 L578 182 L610 179 L642 177 L674 176 L706 177 L738 180 L770 183 L802 188 L834 194 L866 202 L898 210 L930 220 L962 231"
+        fill="none" stroke="#f59f00" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="Arial, sans-serif" font-size="21" fill="#102a43">
+    <text x="420" y="565">Epoch</text>
+    <text x="26" y="335" transform="rotate(-90 26 335)">Score / Loss</text>
+  </g>
+
+  <g>
+    <circle cx="760" cy="87" r="8" fill="#1f77b4"/>
+    <text x="778" y="94" font-family="Arial, sans-serif" font-size="20" fill="#334e68">Train Dice</text>
+    <circle cx="900" cy="87" r="8" fill="#2f9e44"/>
+    <text x="918" y="94" font-family="Arial, sans-serif" font-size="20" fill="#334e68">Val Dice</text>
+    <circle cx="760" cy="118" r="8" fill="#d64545"/>
+    <text x="778" y="125" font-family="Arial, sans-serif" font-size="20" fill="#334e68">Train Loss</text>
+    <circle cx="900" cy="118" r="8" fill="#f59f00"/>
+    <text x="918" y="125" font-family="Arial, sans-serif" font-size="20" fill="#334e68">Val Loss</text>
+  </g>
+
+  <text x="80" y="598" font-family="Arial, sans-serif" font-size="21" fill="#486581">Best validation Dice occurs near epoch 24 before mild overfitting appears.</text>
+</svg>

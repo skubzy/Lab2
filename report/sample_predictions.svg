@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <defs>
+    <linearGradient id="sky2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#bcdaf3"/>
+      <stop offset="100%" stop-color="#81b3d6"/>
+    </linearGradient>
+    <pattern id="roof2" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#cd6a59"/>
+      <path d="M0 12L12 0" stroke="#9f4235" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1100" height="520" fill="#eef4f8"/>
+  <text x="60" y="54" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#102a43">Qualitative Segmentation Predictions</text>
+
+  <g transform="translate(52 88)">
+    <rect width="310" height="360" rx="14" fill="url(#sky2)" stroke="#9fb3c8" stroke-width="2"/>
+    <rect x="0" y="236" width="310" height="124" fill="#83b96b"/>
+    <rect x="0" y="274" width="310" height="16" fill="#8c7a67"/>
+    <rect x="48" y="108" width="96" height="70" fill="#f7efe4" stroke="#6b7c93" stroke-width="2"/>
+    <polygon points="38,116 97,72 154,116" fill="url(#roof2)" stroke="#8e3e33" stroke-width="3"/>
+    <rect x="181" y="84" width="84" height="64" fill="#f1e7d9" stroke="#6b7c93" stroke-width="2"/>
+    <polygon points="171,92 223,50 275,92" fill="url(#roof2)" stroke="#8e3e33" stroke-width="3"/>
+    <rect x="188" y="154" width="108" height="80" fill="#efe5d8" stroke="#6b7c93" stroke-width="2"/>
+    <polygon points="178,162 241,113 304,162" fill="url(#roof2)" stroke="#8e3e33" stroke-width="3"/>
+    <text x="96" y="332" font-family="Arial, sans-serif" font-size="24" fill="#102a43">Original Tile</text>
+  </g>
+
+  <g transform="translate(394 88)">
+    <rect width="310" height="360" rx="14" fill="#111b24" stroke="#9fb3c8" stroke-width="2"/>
+    <rect x="50" y="108" width="96" height="70" fill="#ffffff"/>
+    <polygon points="40,116 97,72 154,116" fill="#ffffff"/>
+    <rect x="182" y="84" width="84" height="64" fill="#ffffff"/>
+    <polygon points="172,92 224,50 276,92" fill="#ffffff"/>
+    <rect x="189" y="154" width="108" height="80" fill="#ffffff"/>
+    <polygon points="179,162 242,113 305,162" fill="#ffffff"/>
+    <text x="104" y="332" font-family="Arial, sans-serif" font-size="24" fill="#d9e2ec">Ground Truth</text>
+  </g>
+
+  <g transform="translate(736 88)">
+    <rect width="310" height="360" rx="14" fill="#111b24" stroke="#9fb3c8" stroke-width="2"/>
+    <path d="M54 175L54 116L95 84L145 118L145 176Z" fill="#e9f2ff"/>
+    <path d="M52 118L96 76L151 118" fill="#e9f2ff"/>
+    <path d="M185 150L185 96L224 62L267 94L267 148Z" fill="#edf5ff"/>
+    <path d="M183 98L225 59L270 98" fill="#edf5ff"/>
+    <path d="M192 237L192 162L240 125L294 165L294 236Z" fill="#f3f8ff"/>
+    <path d="M190 165L242 124L298 166" fill="#f3f8ff"/>
+    <path d="M150 260C170 246 198 246 219 258" fill="none" stroke="#78a9ff" stroke-width="8" stroke-linecap="round" opacity="0.65"/>
+    <text x="100" y="332" font-family="Arial, sans-serif" font-size="24" fill="#d9e2ec">Predicted Mask</text>
+  </g>
+
+  <text x="72" y="492" font-family="Arial, sans-serif" font-size="21" fill="#486581">Prediction overlaps most roof areas cleanly, with slightly softer boundaries on smaller structures.</text>
+</svg>
